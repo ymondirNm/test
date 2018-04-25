@@ -10,7 +10,7 @@
     "build:prod": "webpack -p --env production",
     "dev-server": "webpack-dev-server",
     "test": "jest --config=jest.config.json",
-    "heroku-portbuild": "npm run build:prod"
+    "heroku-postbuild": "npm run build:prod"
   },
   "author": "youn",
   "license": "ISC",
