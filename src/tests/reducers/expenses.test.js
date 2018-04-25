@@ -41,7 +41,7 @@ test('should edit expense ', () => {
 test('should not edit expense if expense not found', () => {
     const updates = {
         description: 'Water and electricity bill',
-        amount: 50000,
+        amount: 50000, 
     };
     const state = expensesReducer(expenses, { type: 'EDIT_EXPENSE', updates, id: '-1' });
     expect(state).toEqual(expenses)

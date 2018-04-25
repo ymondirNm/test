@@ -8,3 +8,4 @@ test('should render Header correctly', () => {
     
     //expect(wrapper.find('h1').text()).toBe('Expensify')
 })
+ 

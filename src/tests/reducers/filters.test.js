@@ -22,7 +22,7 @@ test('should set sortBy to amount', () => {
 })
 
 test('should set sortBy to date', () => {
-    const currentState = {
+    const currentState = { 
         text: "",
         sortBy: 'amount',
         startDate: moment().startOf('month'),

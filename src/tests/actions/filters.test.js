@@ -16,7 +16,7 @@ test('should generate set end date action object', () => {
         type: 'SET_END_DATE',
         date: moment(0)
     });
-});
+}); 
 
 
 
