@@ -6,9 +6,11 @@
   "scripts": {
     "serve": "live-server public/",
     "build:dev": "webpack",
+    "start": "node server/server.js",
     "build:prod": "webpack -p --env production",
     "dev-server": "webpack-dev-server",
-    "test": "jest --config=jest.config.json"
+    "test": "jest --config=jest.config.json",
+    "heroku-portbuild": "npm run build:prod"
   },
   "author": "youn",
   "license": "ISC",
@@ -24,6 +26,7 @@
     "enzyme": "^3.0.0",
     "enzyme-adapter-react-16": "^1.0.0",
     "enzyme-to-json": "^3.0.1",
+    "express": "^4.16.3",
     "extract-text-webpack-plugin": "^3.0.2",
     "jest": "^20.0.4",
     "live-server": "^1.2.0",
