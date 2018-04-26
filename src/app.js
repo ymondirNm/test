@@ -13,6 +13,7 @@ import 'react-dates/lib/css/_datepicker.css';
 
 
 const store = configureStore();
+// store.subscribe();
 /*
 const unsubscribe = store.subscribe(() => {
     const state = store.getState();
