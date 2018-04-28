@@ -7,6 +7,8 @@ import {
   editExpense,
   removeExpense,
   setExpenses,
+  startRemoveExpense,
+  startEditExpense,
   startSetExpenses
 } from "../../actions/expenses";
 import expenses from "../fixtures/expenses";
@@ -129,4 +131,45 @@ test("should  fetch expenses from firebase", done => {
     });
     done();
   });
+});
+
+test("should  remove expenses from firebase", done => {
+  const store = createMockStore({});
+
+  store
+    .dispatch(startRemoveExpense(expenses[0].id))
+    .then(() => {
+      const actions = store.getActions();
+      expect(actions[0]).toEqual({
+        type: "REMOVE_EXPENSE",
+        id: expenses[0].id
+      });
+      return database.ref(`expenses/${expenses[0].id}`).once("value");
+    })
+    .then(snapshot => {
+      expect(snapshot.val()).toBeFalsy();
+      done();
+    });
+});
+
+test("should  edit expenses in firebase", done => {
+  const store = createMockStore({});
+
+  store
+    .dispatch(startEditExpense(expenses[0].id, { amount: 1000 }))
+    .then(() => {
+      const actions = store.getActions();
+      expect(actions[0]).toEqual({
+        type: "EDIT_EXPENSE",
+        id: expenses[0].id,
+        updates: { amount: 1000 }
+      });
+      return database.ref(`expenses/${expenses[0].id}`).once("value");
+    })
+    .then(snapshot => {
+      const exp = snapshot.val();
+      expect(exp.amount).toBe(1000);
+      
+      done();
+    });
 });

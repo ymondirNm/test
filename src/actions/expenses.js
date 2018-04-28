@@ -57,15 +57,36 @@ export const startSetExpenses = () => {
       .then(snapshot => {
         const expensesData = [];
         snapshot.forEach(child => {
-            expensesData.push({
-                id: child.key,
-                ...child.val()
-            })
+          expensesData.push({
+            id: child.key,
+            ...child.val()
+          });
         });
 
-        dispatch(
-          setExpenses(expensesData)
-        );
+        dispatch(setExpenses(expensesData));
+      });
+  };
+};
+
+// export const startSetExpenses;
+export const startRemoveExpense = id => {
+  return dispatch => {
+    return database
+      .ref(`expenses/${id}`)
+      .set(null)
+      .then(() => {
+        dispatch(removeExpense({ id }));
+      });
+  };
+};
+// export const startSetExpenses;
+export const startEditExpense = (id, updates) => {
+  return dispatch => {
+    return database
+      .ref(`expenses/${id}`)
+      .update(updates)
+      .then(() => {
+        dispatch(editExpense(id, updates));
       });
   };
 };
