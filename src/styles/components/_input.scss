@@ -1,0 +1,24 @@
+.baseInput {
+  border: 1px solid #cacccd;
+  height: 50px;
+  font-size: $font-size-large;
+  font-weight: 300;
+  padding: $s-size;
+}
+
+.text-input {
+
+  @extend .baseInput;
+
+}
+
+.select {
+  @extend .baseInput;
+}
+
+.textarea {
+  @extend .baseInput;
+  height: 10rem;
+}
+
+
